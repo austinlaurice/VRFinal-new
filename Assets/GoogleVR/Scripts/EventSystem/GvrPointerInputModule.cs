@@ -144,9 +144,14 @@ public class GvrPointerInputModule : BaseInputModule {
     bool triggerDown = Input.GetMouseButtonDown(0);
     // True if the trigger is held down.
     bool triggering = Input.GetMouseButton(0);
+    
+    // True during the frame that the trigger has been pressed.
+    triggerDown |= Input.GetButtonDown("Fire1");
+    // True if the trigger is held down.
+    triggering |= Input.GetButton("Fire1");
 
-    #if UNITY_HAS_GOOGLEVR && (UNITY_ANDROID || UNITY_EDITOR)
-    triggerDown |= GvrController.ClickButtonDown;
+#if UNITY_HAS_GOOGLEVR && (UNITY_ANDROID || UNITY_EDITOR)
+        triggerDown |= GvrController.ClickButtonDown;
     triggering |= GvrController.ClickButton;
     #endif  // UNITY_HAS_GOOGLEVR && (UNITY_ANDROID || UNITY_EDITOR)
 
