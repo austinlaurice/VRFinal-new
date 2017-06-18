@@ -91,11 +91,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void FixedUpdate()
         {
+            if(Input.GetButton("Fire1"))
+            {
+                return;
+            }
             float speed;
             GetInput(out speed);
             // always move along the camera forward as it is the direction that it being aimed at
             Vector3 desiredMove = m_Camera.transform.forward*m_Input.y + m_Camera.transform.right*m_Input.x;
-            Debug.Log(m_Input.ToString());
 
             // get a normal for the surface that is being touched to move along it
             RaycastHit hitInfo;
