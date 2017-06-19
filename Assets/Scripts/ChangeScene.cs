@@ -16,10 +16,8 @@ public class ChangeScene : MonoBehaviour {
 	void Update () {
 		
 	}
-    private void OnTriggerEnter(Collider other)
+    public void change()
     {
-        if(other.name == "FPSController")
-        {
             if (!loadedScenes.Contains(scene))
             {
                 Application.LoadLevelAdditive(scene);
@@ -27,6 +25,13 @@ public class ChangeScene : MonoBehaviour {
             }
             GameObject.Find("FPSController").transform.position = position;
             //SceneManager.LoadScene(scene);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "FPSController")
+        {
+            change();
         }
     }
 }
